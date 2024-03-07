@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "ws2811.h": "c",
+        "uc1701.h": "c",
+        "gpio.h": "c",
+        "internal.h": "c"
+    }
+}

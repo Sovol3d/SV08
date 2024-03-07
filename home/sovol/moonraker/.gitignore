@@ -1,0 +1,13 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+.devel
+
+.venv
+venv
+start_moonraker
+*.env
+.pdm-python
+build
+dist

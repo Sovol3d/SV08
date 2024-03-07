@@ -1,0 +1,17 @@
+# KERNEL=="sd[a-z]", NAME="%k", SYMLINK+="%k", GROUP="users"
+
+# ACTION=="add", KERNEL=="sd[a-z][0-9]", SYMLINK+="%k", GROUP="users", NAME="%k"
+
+# ACTION=="add", KERNEL=="sd[a-z][0-9]", RUN+="/bin/mkdir -p /home/sovol/gcode_files/%k"
+
+# ACTION=="add", KERNEL=="sd[a-z][0-9]", RUN+="/bin/systemd-mount --no-block --collect /dev/%k /home/sovol/gcode_files/%k"
+
+# ACTION=="remove", KERNEL=="sd[a-z][0-9]", RUN+="/bin/systemd-umount /home/sovol/gcode_files/%k"
+
+# ACTION=="remove", KERNEL=="sd[a-z][0-9]", RUN+="/bin/rm -rf /home/sovol/gcode_files/%k"
+
+# mount the device when added
+KERNEL=="sd[a-z]*", ACTION=="add",  	RUN+="/usr/bin/systemctl --no-block restart makerbase-automount@%k.service"
+
+# clean up after device removal
+KERNEL=="sd[a-z]*", ACTION=="remove",	RUN+="/usr/bin/systemctl --no-block restart makerbase-automount@%k.service"

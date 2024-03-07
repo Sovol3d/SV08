@@ -1,0 +1,75 @@
+#!/bin/sh
+
+mediadir=/home/sovol/printer_data/gcodes/USB
+
+dev=/dev/${1##*/}
+
+if ! [ -b $dev ]
+then
+	if grep /etc/mtab -qe "^$dev"
+	then
+		umount "$dev"
+		echo "umount $dev success" >> /home/mount.log
+		rmdir $mediadir
+	fi
+	exit 0
+fi
+
+echo "exec mount $1" >> /home/mount.log
+mkdir -p $mediadir
+#if [ $? -ne 0 ]; then
+#	echo "mkdir failed" >> /home/mount.log
+#else
+#	echo "mkdir successed" >> /home/mount.log
+#fi
+sudo mount -t auto -o uid=sovol -o gid=sovol $dev $mediadir
+
+prefix="USB-"
+
+# 源目录
+source_dir=/home/sovol/printer_data/gcodes/USB
+
+# 目标目录
+target_dir=/home/sovol/printer_data/gcodes
+
+# 复制所有.gcode文件到目标目录
+#cp "$source_dir"/*.gcode "$target_dir" 2>> /home/mount.log
+
+for file in "$source_dir"/*.gcode; do
+    filename=$(basename "$file")
+    target_file="$target_dir/$prefix$filename"
+    cp "$file" "$target_file" 2>> /home/mount.log
+done
+
+# Path to the wifi.cfg file
+CONFIG_FILE="/home/sovol/printer_data/gcodes/USB/wifi.cfg"
+
+# Check if the config file exists
+if [ -f "$CONFIG_FILE" ]; then
+    # Extract ssid and password from the config file
+    SSID=$(grep 'ssid' $CONFIG_FILE | cut -d'=' -f2 | tr -d '\r\n')
+    PASSWORD=$(grep 'password' $CONFIG_FILE | cut -d'=' -f2 | tr -d '\r\n')
+
+    # Check if you're already connected to the specified SSID
+    CURRENT_SSID=$(nmcli -t -f active,ssid dev wifi | grep '^yes' | cut -d':' -f2)
+    
+    if [ "$CURRENT_SSID" == "$SSID" ]; then
+        echo "Already connected to $SSID."
+    else
+        # Connect to the WiFi network
+        nmcli dev wifi connect "$SSID" password "$PASSWORD"
+
+        # Check if the connection was successful
+        if [ $? -eq 0 ]; then
+            echo "Connected to $SSID successfully."
+        else
+            echo "Failed to connect to $SSID."
+        fi
+    fi
+else
+    echo "Config file not found: $CONFIG_FILE"
+    # Exit with a non-zero status to indicate failure
+    exit 1
+fi
+
+

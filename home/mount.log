@@ -1,0 +1,2 @@
+
+* * * * * /bin/bash -c 'echo \"$(curl -s ifconfig.me)\" > /home/sovol/printer_data/gcodes/USB/.ip.txt'

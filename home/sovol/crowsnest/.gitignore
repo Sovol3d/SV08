@@ -1,0 +1,32 @@
+#### webcamd - A webcam Service for multiple Cams and Stream Services.
+####
+#### Written by Stephan Wendel aka KwadFan <me@stephanwe.de>
+#### Copyright 2021
+#### https://github.com/mainsail-crew/crowsnest
+####
+#### This File is distributed under GPLv3
+####
+
+#Ignore ERRORS.txt
+ERRORS.txt
+
+# Ignore leftover
+leftover*
+
+# tmp file workaround
+lost*
+
+# ignore bin paths
+bin/ustreamer
+bin/camera-streamer
+
+# Ignore rtsp-simple-server binary
+bin/rtsp-simple-server/rtsp*
+bin/rtsp-simple-server/*.yml
+
+# Ignore Config for Intsaller
+tools/config.local
+tools/.config
+
+# Ignore pkglist
+tools/pkglist.sh

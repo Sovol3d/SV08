@@ -1,0 +1,33 @@
+on:
+  push:
+    branches:
+    - '**'
+    paths:
+      - '**.sh'
+      - 'webcamd'
+      - 'libs/**'
+  pull_request:
+    branches:
+      - 'master'
+      - 'develop'
+    paths:
+      - '**.sh'
+      - 'webcamd'
+      - 'libs/**'
+
+name: 'Check Script'
+
+jobs:
+  shellcheck:
+    name: Shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Repository
+        uses: actions/checkout@v2
+      - name: Run ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        env:
+          SHELLCHECK_OPTS: -ax -s bash
+        with:
+          ignore_paths: custompios
+          format: tty

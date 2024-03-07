@@ -1,0 +1,66 @@
+name: Bug report
+description: Create a report to help us improve
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue form is for reporting bugs only!
+        If you have a feature request, please use [Feature Request](/new?template=feature_request.yml)
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: >-
+        A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: dropdown
+    id: client
+    attributes:
+      label: Client
+      multiple: true
+      description: On what clients are you seeing the problem?
+      options:
+        - Mainsail
+        - Fluidd
+        - MoonCord
+        - KlipperScreen
+        - MobileRaker
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      multiple: true
+      description: On what browsers are you seeing the problem?
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Microsoft Edge
+        - Brave
+        - Other or N/A
+    validations:
+      required: true
+  - type: textarea
+    id: repro-steps
+    attributes:
+      label: How to reproduce
+      description: >-
+        Minimal and precise steps to reproduce this bug.
+    validations:
+      required: true
+  - type: textarea
+    id: additional-info
+    attributes:
+      label: Additional information
+      description: |
+        Please attach moonraker.log using the field below.  If you are using
+        a Browser or Client not provided in the options above please specify
+        them here.
+
+        You may also include any additional information, screenshots, or files
+        that helpful in describing the issue.
