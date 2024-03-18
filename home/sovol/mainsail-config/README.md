@@ -202,16 +202,16 @@ SET_PAUSE_AT_LAYER [ENABLE=1] [LAYER=<number>] [MACRO=<name>]
 
 to get execute the given GCODE macro at the given LAYER number change. The MACRO is normally either PAUSE (default) or M600 (if you have specified it in your printer.cfg).
 
-To remove the "Pause at next Layer" simple send
+To remove the "Pause at next Layer" simply send
+
+```txt
+SET_PAUSE_NEXT_LAYER ENABLE=0
+```
+
+To remove the "Pause at Layer" simply send
 
 ```txt
 SET_PAUSE_AT_LAYER ENABLE=0
-```
-
-To remove the "Pause at Layer" simple send
-
-```txt
-SET_PAUSE_AT_LAYER [ENABLE=0]
 ```
 
 Both will clear after execution.

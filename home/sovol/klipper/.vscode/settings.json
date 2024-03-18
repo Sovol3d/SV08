@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-        "internal.h": "c",
-        "sched.h": "c",
-        "command.h": "c"
-    }
-}

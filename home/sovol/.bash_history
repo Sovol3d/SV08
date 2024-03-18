@@ -275,3 +275,65 @@ ls
 cd kiauh
 ./kiauh.sh 
 cat /etc/X11/Xwrapper.config 
+ls
+cd kiauh
+./kiauh.sh 
+wget https://github.com/Sovol3d/mainsail/releases/download/v2.10.1/mainsail.zip
+ls
+rm mainsail.zip 
+ls
+./kiauh.sh 
+ls
+cd ..
+ls
+ls mainsail
+mkdir mainsail
+rmdir mainsail
+ls
+cd kiauh
+./kiauh.sh 
+curl -s "https://github.com/Sovol3d/mainsail/tags" | grep "name" | cut -d'"' -f4
+./kiauh.sh 
+ls
+cd kiauh
+./kiauh.sh 
+ls
+cd ..
+ls
+./kiauh.sh 
+cd kiauh
+./kiauh.sh 
+ls
+cd ..
+ls
+~/klippy-env/bin/pip install -v numpy
+cd kiauh
+./kiauh.sh 
+ls
+cd kiauh
+ls
+./kiauh.sh 
+Q
+cd ..
+ls
+cd patch/
+./patch.sh 
+ls
+ls config/
+cd kiauh
+./kiauh.sh 
+ls
+cd usbmount/
+make intall
+ls
+sudo make install
+ls
+git clone https://github.com/TheSpaghettiDetective/moonraker-obico.git
+ls
+cd moonraker-obico/
+./install.sh 
+ls
+cd usbmount/
+sudo make install
+ls
+vi makerbase-automount

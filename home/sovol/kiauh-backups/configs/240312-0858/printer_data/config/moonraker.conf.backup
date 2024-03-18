@@ -1,0 +1,34 @@
+[server]
+host: 0.0.0.0
+port: 7125
+klippy_uds_address: /home/sovol/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients:
+    172.17.0.0/16
+    10.0.0.0/8
+    127.0.0.0/8
+    169.254.0.0/16
+    172.16.0.0/12
+    192.168.0.0/16
+    FE80::/10
+    ::1/128
+cors_domains:
+    *.lan
+    *.local
+    *://localhost
+    *://localhost:*
+    *://my.mainsail.xyz
+    *://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[update_manager]
+channel: dev
+refresh_interval: 168
+
+[timelapse]
+output_path: ~/printer_data/timelapse/
+frame_path: /tmp/timelapse/printer

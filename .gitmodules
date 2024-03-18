@@ -1,0 +1,3 @@
+[submodule "moonraker-obico"]
+	path = moonraker-obico
+	url = https://github.com/TheSpaghettiDetective/moonraker-obico

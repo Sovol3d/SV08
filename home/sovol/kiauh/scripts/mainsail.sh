@@ -341,7 +341,7 @@ function get_remote_mainsail_version() {
   [[ ! $(dpkg-query -f'${Status}' --show curl 2>/dev/null) = *\ installed ]] && return
 
   local tags
-  tags=$(curl -s "https://api.github.com/repos/mainsail-crew/mainsail/tags" | grep "name" | cut -d'"' -f4)
+  tags=$(curl -s "https://api.github.com/repos/Sovol3d/mainsail/tags" | grep "name" | cut -d'"' -f4)
   echo "${tags}" | head -1
 }
 
@@ -536,7 +536,7 @@ function get_mainsail_download_url() {
   local releases_by_tag tags tag unstable_url url
 
   ### latest stable download url
-  url="https://github.com/mainsail-crew/mainsail/releases/latest/download/mainsail.zip"
+  url="https://github.com/Sovol3d/mainsail/releases/download/v2.10.1/mainsail.zip"
 
   read_kiauh_ini "${FUNCNAME[0]}"
   if [[ ${mainsail_install_unstable} == "true" ]]; then

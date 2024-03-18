@@ -33,7 +33,7 @@ function set_globals() {
   #================== KLIPPER ===================#
   KLIPPY_ENV="${HOME}/klippy-env"
   KLIPPER_DIR="${HOME}/klipper"
-  KLIPPER_REPO="https://github.com/Klipper3d/klipper.git"
+  KLIPPER_REPO="https://github.com/Sovol3d/klipper.git"
 
   #================= MOONRAKER ==================#
   MOONRAKER_ENV="${HOME}/moonraker-env"

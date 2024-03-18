@@ -60,10 +60,7 @@ class ScreenPanel:
 
     def calibrateZoffset(self):
         self._screen.show_popup_message(f"calibrate Zoffset start!", 1)
-        self._screen._ws.klippy.gcode_script("M117 Calibrate Zoffset")
-        self._screen._ws.klippy.gcode_script("CALIBRATION_ZOFFSET")
-        self._screen._ws.klippy.gcode_script("M23 /.zoffset_test.gcode")
-        self._screen._ws.klippy.gcode_script("M24")
+        self._screen._ws.klippy.gcode_script("_Delay_Calibrate")
     
     def menu_item_clicked(self, widget, item):
         if item['panel'] == 'calibrateZoffset':

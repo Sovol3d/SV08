@@ -1,12 +1,25 @@
 #!/bin/sh
 
-mediadir=/home/sovol/printer_data/gcodes/USB
+install_deb_package() {
+    local deb_file=$(find /tmp -type f -name "Sovol_Update_Package*.deb")
 
-# 源目录
-source_dir=/home/sovol/printer_data/gcodes/USB
+    echo "Installing $deb_file"
+    sudo dpkg -i "$deb_file" 2>> /home/mount.log
 
-# 目标目录
-target_dir=/home/sovol/printer_data/gcodes
+    if [ $? -eq 0 ]; then
+        echo "deb package install success!"
+        sudo rm -rf "$deb_file" 2>> /home/mount.log
+    else
+        echo "deb package install fail!"
+        # exit -1
+    fi
+}
+
+mediadir="/home/sovol/printer_data/gcodes/USB"
+
+source_dir="/home/sovol/printer_data/gcodes/USB"
+
+target_dir="/home/sovol/printer_data/gcodes"
 
 dev=/dev/${1##*/}
 
@@ -14,7 +27,7 @@ if ! [ -b $dev ]
 then
 	if grep /etc/mtab -qe "^$dev"
 	then
-	    rm -f /home/sovol/printer_data/gcodes/USB-*.gcode
+	        rm -f /home/sovol/printer_data/gcodes/USB-*.gcode
 		umount "$dev"
 		echo "umount $dev success" >> /home/mount.log
 		rmdir $mediadir
@@ -40,8 +53,6 @@ for file in "$source_dir"/*.gcode; do
     target_file="$target_dir/$prefix$filename"
     cp "$file" "$target_file" 2>> /home/mount.log
 done
-
-#echo $(ifconfig wlan0 | grep "inet " | awk "{print \$2}") > /home/sovol/printer_data/gcodes/USB/.ip.txt
 
 # Path to the wifi.cfg file
 CONFIG_FILE="/home/sovol/printer_data/gcodes/USB/wifi.cfg"
@@ -74,31 +85,60 @@ else
     # exit 1
 fi
 
-timestamp=$(date +"%Y-%m-%d %H:%M:%S")
-
-deb_file=$(find "$target_dir" -type f -name "Sovol_Update_Package*.deb")
-
-if [ -z "$deb_file" ]; then
-    echo "No Sovol_Update_Package .deb file found in $target_dir"
-else
-    sudo sh -c 'echo "Timestamp: $(date)" >>../mount.log'
-
-    # sudo dpkg --purge update-package 2>> /home/mount.log
-
-    sudo mv "$deb_file" /tmp 2>> /home/mount.log
-    deb_file=$(find /tmp -type f -name "Sovol_Update_Package*.deb")
-
-    echo "Installing $deb_file"
-    sudo dpkg -i "$deb_file" 2>> /home/mount.log
-
-    if [ $? -eq 0 ]; then
-        echo "deb package install success!"
-        sudo rm -rf "$deb_file" 2>> /home/mount.log
-    else
-        echo "deb package install fail!"
-        # exit -1
-    fi
+# -----------------printer_test.cfg测试----------------
+if [ -f "$mediadir/test.sh" ]; then
+    echo "Do test successed!" >> /home/mount.log
+    bash $mediadir/test.sh
 fi
 
+production_mode_dir="/home/sovol/printer_data/gcodes/USB/Sovol_Production_Mode"
 
+timestamp=$(date +"%Y-%m-%d %H:%M:%S")
 
+LOG_FILE="/home/production_mode.log"
+
+#如果目录存在
+if [ -d "$production_mode_dir" ]; then
+    #如果没有log文件就创建log文件
+    if [ ! -f "$LOG_FILE" ]; then
+        sudo touch "$LOG_FILE" 
+    fi
+
+    #deb_file=$(find "$production_mode_dir" -type f -name "Sovol_Update_Package*.deb")
+    deb_file=$(find "$production_mode_dir" -type f -name "Sovol_Update_Package*.deb" | tr -d '\n\r')
+
+    if [ -z "$deb_file" ]; then
+        echo "No Sovol_Update_Package .deb file found in $production_mode_dir"
+    else
+        if  grep "$deb_file" "$LOG_FILE"; then
+            # echo "Sovol_Update_Package*.deb file has been installed"
+            sudo sh -c 'echo "'"$deb_file"' has been installed" >> /home/production_mode.log'
+        else
+            sudo sh -c 'echo "No '"$deb_file"' file found in $production_mode_dir" >> /home/production_mode.log'
+
+            #deb包信息打印到/home/production_mode.log中
+            sudo sh -c 'echo "Filename: '"$deb_file"'" >> /home/production_mode.log'
+
+            #打印时间戳到/home/mount.log中
+            sudo sh -c 'echo "Timestamp: $(date)" >> /home/mount.log'
+
+            sudo cp "$deb_file" /tmp 2>> /home/mount.log
+
+            install_deb_package
+        fi
+    fi
+else
+    deb_file=$(find "$target_dir" -type f -name "Sovol_Update_Package*.deb")
+
+    if [ -z "$deb_file" ]; then
+        echo "No Sovol_Update_Package .deb file found in $target_dir"
+    else
+        sudo sh -c 'echo "Timestamp: $(date)" >> /home/mount.log'
+
+        # sudo dpkg --purge update-package 2>> /home/mount.log
+
+        sudo mv "$deb_file" /tmp 2>> /home/mount.log
+
+        install_deb_package
+    fi
+fi
