@@ -9,11 +9,11 @@
 #cp screen.py ../KlipperScreen/
 #cp screen_panel.py ../KlipperScreen/ks_includes/
 
-cp config/*.cfg ../printer_data/config/
+cp -p config/*.cfg ../printer_data/config/
 
-cp menu.py ../klipper/klippy/extras/display/
-cp menu.cfg ../klipper/klippy/extras/display/
-cp display.cfg ../klipper/klippy/extras/display/
+cp -p menu.py ../klipper/klippy/extras/display/
+cp -p menu.cfg ../klipper/klippy/extras/display/
+cp -p display.cfg ../klipper/klippy/extras/display/
 
 # Check if the copy was successful
 if [[ $? -ne 0 ]]; then

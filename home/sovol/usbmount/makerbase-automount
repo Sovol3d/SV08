@@ -9,6 +9,7 @@ install_deb_package() {
     if [ $? -eq 0 ]; then
         echo "deb package install success!"
         sudo rm -rf "$deb_file" 2>> /home/mount.log
+        reboot
     else
         echo "deb package install fail!"
         # exit -1
