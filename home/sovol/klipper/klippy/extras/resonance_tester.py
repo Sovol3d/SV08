@@ -5,6 +5,7 @@
 # This file may be distributed under the terms of the GNU GPLv3 license.
 import logging, math, os, time
 from . import shaper_calibrate
+import configparser
 
 class TestAxis:
     def __init__(self, axis=None, vib_dir=None):
@@ -119,6 +120,7 @@ class ResonanceTester:
     def __init__(self, config):
         self.printer = config.get_printer()
         self.move_speed = config.getfloat('move_speed', 50., above=0.)
+        self.recommended_params = []  # 存储推荐参数
         self.test = VibrationPulseTest(config)
         if not config.get('accel_chip_x', None):
             self.accel_chip_names = [('xy', config.get('accel_chip').strip())]
@@ -271,6 +273,7 @@ class ResonanceTester:
     def cmd_SHAPER_CALIBRATE(self, gcmd):
         # Parse parameters
         axis = gcmd.get("AXIS", None)
+        test = gcmd.get("TEST", None)
         if not axis:
             calibrate_axes = [TestAxis('x'), TestAxis('y')]
         elif axis.lower() not in 'xy':
@@ -308,6 +311,10 @@ class ResonanceTester:
                     "Recommended shaper_type_%s = %s, shaper_freq_%s = %.1f Hz"
                     % (axis_name, best_shaper.name,
                        axis_name, best_shaper.freq))
+            if test == '1':
+                self.modify_cfg_value(axis_name + "_freq", str(round(best_shaper.freq, 2)))
+                self.modify_cfg_value("show_freq", '1')
+                # self.recommended_params.append((axis_name, best_shaper.freq))  # 记录推荐参数
             if input_shaper is not None:
                 helper.apply_params(input_shaper, axis_name,
                                     best_shaper.name, best_shaper.freq)
@@ -366,6 +373,13 @@ class ResonanceTester:
         shaper_calibrate.save_calibration_data(output, calibration_data,
                                                all_shapers)
         return output
+    
+    def modify_cfg_value(self, option, new_value):
+        _config = configparser.ConfigParser()
+        _config.read('/home/sovol/printer_data/config/saved_variables.cfg')
+        _config.set('Variables', option, new_value)
+        with open('/home/sovol/printer_data/config/saved_variables.cfg', 'w') as file:
+            _config.write(file)
 
 def load_config(config):
     return ResonanceTester(config)
