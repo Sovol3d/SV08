@@ -95,7 +95,8 @@ class VirtualSD:
             return self.current_file.name
         return None
     def progress(self):
-        if self.file_size:
+        # logging.info("+++++++file_position, file_size . %s : %s", self.file_position, self.file_size)
+        if self.file_size and self.file_position <= self.file_size:
             return float(self.file_position) / self.file_size
         else:
             return 0.
