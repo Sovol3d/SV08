@@ -1,5 +1,5 @@
 <!-- THIS FILE IS UPDATED AUTOMATICALLY, ANY CHANGES WILL BE OVERRIDDEN -->
-# Changelog
+# Changelog!
 All notable changes to Mainsail will be documented in this file.
 
 ## [2.10.0](https://github.com/mainsail-crew/mainsail/releases/tag/v2.10.0) - 2024-02-15
