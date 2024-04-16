@@ -5,13 +5,13 @@ It aims to provide an alternative solution for 3D printing enthusiasts who are e
 We comply with the open source regulations of Voron and Klipper, and make SV08 open source (including structure, hardware, and firmware) for users to DIY.
 
 SV08 mostly featured with:
-Core-XY kinematic design
-4 independent Z motors(flying gantry) for precise control
-Enhanced details with Klipper firmware
-Large printing volume of 350x350x345mm
-Smooth operation with all-axes linear rails
-Quick and hassle-free assembly in just 1 hour
-Fully open-source for customization and flexibility
+- Core-XY kinematic design
+- 4 independent Z motors(flying gantry) for precise control
+- Enhanced details with Klipper firmware
+- Large printing volume of 350x350x345mm
+- Smooth operation with all-axes linear rails
+- Quick and hassle-free assembly in just 1 hour
+- Fully open-source for customization and flexibility
 
 # Learn more
 
