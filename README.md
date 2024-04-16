@@ -1,6 +1,6 @@
 # Introduction
 
-SV08 is a flying gantry Core-XY printer with a print area of 350*350*345mm, also a derivative work based on Voron V2.4. 
+SV08 is a flying gantry Core-XY printer with a print area of 350mm x 350mm x 345mm, also a derivative work based on Voron V2.4. 
 It aims to provide an alternative solution for 3D printing enthusiasts who are eager to use Voron V2.4 but are hindered by high costs and learning barriers.
 We comply with the open source regulations of Voron and Klipper, and make SV08 open source (including structure, hardware, and firmware) for users to DIY.
 
