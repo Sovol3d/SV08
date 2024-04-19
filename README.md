@@ -28,6 +28,7 @@ info@sovol3d.com
 
 Notice: Use the KIAUH script to update klipper, the updated address is [Sovol-klipper](https://github.com/Sovol3d/klipper)
 How to update klipper
+- ssh log in:sovol ;password:sovol
 - cd kiauh
 - ./kiauh.sh
 - input Perform action: 3 and Remove klipper
