@@ -13,11 +13,18 @@ All text in blocks like below are taken directly from Sovols SV08 Repo
 This is sovols official response when asked if merges would be considered for the github. [Email response from sovol of them declining to have changes merged to the github.](images/ghresponse.png)
 
 
+# Contributing
+
+I am more then willing to add in any mods that you feel will improve the overall user experience.
+
+I accept this in either the form of a pull request or discussion. If you have the ability and know your way around github a pull request is a lot easier for me to merge. however if you just have a vauge idea of what you want added please leave a comment in the form of a [discussion topic.](https://github.com/mon5termatt/SV08-Community/discussions)
+
 # To Do
 
-- [ ] Make list
-- [ ] 2
-- [ ] 3
+- [ ] Add reflashing guide using EMMC adapter.
+- [ ] Add guide for changing default password.
+- [ ] Add more guides. To be determined at a later time.
+- [ ] Add in other users modifications. 
 
 
 # Notice
