@@ -1,44 +1,59 @@
 # Introduction
 
-SV08 is a flying gantry Core-XY printer with a print area of 350x350x345mm, also a derivative work based on Voron V2.4. 
-It aims to provide an alternative solution for 3D printing enthusiasts who are eager to use Voron V2.4 but are hindered by high costs and learning barriers.
-We comply with the open source regulations of Voron and Klipper, and make SV08 open source (including structure, hardware, and firmware) for users to DIY.
+This repo servers to better assist users with modifying the SV08 printer.
+This repo also will eventually include guides that sovol declined to have made
 
-SV08 mostly featured with:
-- Core-XY kinematic design
-- 4 independent Z motors(flying gantry) for precise control
-- Enhanced details with Klipper firmware
-- Large printing volume of 350x350x345mm
-- Smooth operation with all-axes linear rails
-- Quick and hassle-free assembly in just 1 hour
-- Fully open-source for customization and flexibility
 
-# Learn more
+All text in blocks like below are taken directly from Sovols SV08 Repo
+> Quote blocks like this
 
-on Sovol Official Website: https://www.sovol3d.com/products/sovol-sv08-3d-printer
+
+
+# 
+This is sovols official response when asked if merges would be considered for the github. [Email response from sovol of them declining to have changes merged to the github.](images/ghresponse.png)
+
+
+# To Do
+
+- [ ] Make list
+- [ ] 2
+- [ ] 3
+
 
 # Notice
 
-This is the official source code for Sovol SV08. The damage caused by modifying firmware also using the third party firmware will lose the 1 year warranty. If you need support, it’s recommended to reflash the stock firmware before contacting sovol.
+Sovol will NOT give you support if you modify ANY files on your printer. this includes tuning. before you email sovol for support you must follow the factory reset guide or Re-flash the EMMC.
 
-Sovol doesn’t provide tech help for help users to modify source code, but if you need us to add more functions, you are welcome to send us your suggestions via Facebook Messenger or email 
+> This is the official source code for Sovol SV08. The damage caused by modifying firmware also using the third party firmware will lose the 1 year warranty. If you need support, it’s recommended to reflash the stock firmware before contacting sovol.
+
+> Sovol doesn’t provide tech help for help users to modify source code, but if you need us to add more functions, you are welcome to send us your suggestions via Facebook Messenger or email 
 info@sovol3d.com
 
-# Use KIAUH
 
-Notice: Use the KIAUH script to update klipper, the updated address is [Sovol-klipper](https://github.com/Sovol3d/klipper)
-How to update klipper
-- ssh log in:sovol ;password:sovol
-- cd kiauh
-- ./kiauh.sh
-- input Perform action: 3 and Remove klipper
-- back and install klipper
-  
-# Join Sovol Community
+# Official Links
 
-- Sovol Facebook page: https://www.facebook.com/sovol3d/
-- Sovol Youtube Channel: https://www.youtube.com/c/Sovol/videos
-- Sovol Offcial User Group: https://www.facebook.com/groups/sovol3d
-- Sovol Forum website: https://forum.sovol3d.com/
+* Product Page: https://www.sovol3d.com/products/sovol-sv08-3d-printer
+* SV08 Wiki: https://wiki.sovol3d.com/en/SV08
+* Firmware: https://drive.google.com/drive/folders/1QGeGrXtf-aVuC341sM102vSQTVu2bvZ3?usp=sharing
+* Image file (Follow the Reflashing Guide): https://drive.google.com/drive/folders/10CdLCMd5jGHhtjPqmnJGEteK2nnGQku2?usp=sharing
+* Orcaslicer Profiles: https://drive.google.com/drive/folders/1KWjLxwpO_9_Xqi_f6qu84HRxZi26a_GN?usp=sharing
+* Files that came on the USB: https://drive.google.com/drive/folders/1MqC0QyXXDqqR__qIxysjTG5eevuNQv5i?usp=sharing
 
 
+
+
+
+
+
+
+# Setting Up KIAUH
+
+if for some reason kiauh needs to be reinstalled. you *should consider* using Sovols version of klipper to avoid errors. The updated address is [Sovol-klipper](https://github.com/Sovol3d/klipper)
+
+
+> How to update klipper
+> - ssh log in:sovol ;password:sovol
+> - cd kiauh
+> - ./kiauh.sh
+> - input Perform action: 3 and Remove klipper
+> - back and install klipper
