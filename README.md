@@ -39,28 +39,15 @@ info@sovol3d.com
 
 # Official Links
 
-* Product Page: https://www.sovol3d.com/products/sovol-sv08-3d-printer
-* SV08 Wiki: https://wiki.sovol3d.com/en/SV08
-* Firmware: https://drive.google.com/drive/folders/1QGeGrXtf-aVuC341sM102vSQTVu2bvZ3?usp=sharing
-* Image file (Follow the Reflashing Guide): https://drive.google.com/drive/folders/10CdLCMd5jGHhtjPqmnJGEteK2nnGQku2?usp=sharing
-* Orcaslicer Profiles: https://drive.google.com/drive/folders/1KWjLxwpO_9_Xqi_f6qu84HRxZi26a_GN?usp=sharing
-* Files that came on the USB: https://drive.google.com/drive/folders/1MqC0QyXXDqqR__qIxysjTG5eevuNQv5i?usp=sharing
+* [Product Page](https://www.sovol3d.com/products/sovol-sv08-3d-printer)
+* [SV08 Wiki](https://wiki.sovol3d.com/en/SV08)
+* [Firmware](https://drive.google.com/drive/folders/1QGeGrXtf-aVuC341sM102vSQTVu2bvZ3?usp=sharing)
+* [Image file (Follow the Reflashing Guide)](https://drive.google.com/drive/folders/10CdLCMd5jGHhtjPqmnJGEteK2nnGQku2?usp=sharing)
+* [Orcaslicer Profiles](https://drive.google.com/drive/folders/1KWjLxwpO_9_Xqi_f6qu84HRxZi26a_GN?usp=sharing)
+* [USB Files](https://drive.google.com/drive/folders/1MqC0QyXXDqqR__qIxysjTG5eevuNQv5i?usp=sharing)
 
 
+# Unofficial Links
 
-
-
-
-
-
-# Setting Up KIAUH
-
-if for some reason kiauh needs to be reinstalled. you *should consider* using Sovols version of klipper to avoid errors. The updated address is [Sovol-klipper](https://github.com/Sovol3d/klipper)
-
-
-> How to update klipper
-> - ssh log in:sovol ;password:sovol
-> - cd kiauh
-> - ./kiauh.sh
-> - input Perform action: 3 and Remove klipper
-> - back and install klipper
+* [Sovol Discord](https://discord.gg/6ZgNqSwUsq)
+* [SV08 Development Discord](https://discord.gg/NWy2JQPsaN)
