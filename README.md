@@ -11,7 +11,7 @@ SV08 mostly featured with:
 - Large printing volume of 350x350x345mm
 - Smooth operation with all-axes linear rails
 - Quick and hassle-free assembly in just 1 hour
-- Fully open-source for customization and flexibility
+- Open-source for customization and flexibility
 
 # Learn more
 
